@@ -9,5 +9,10 @@ import './styles/resets.scss'
 
 console.log(checkForName);
 
+export {
+    checkForName,
+    handleSubmit
+}
+
 alert("I EXIST")
 console.log("CHANGE!!");
