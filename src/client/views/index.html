@@ -19,20 +19,33 @@
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                    <input id="name" type="text" name="textarea" value="" onblur="onBlur()" placeholder="Type here a critique to the last meal you had.">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>NLP Results:</strong>
+                <div id="agreement"></div>
+                <div id="confidence"></div>
+                <div id="irony"></div>
+                <div id="subjectivity"></div>
             </section>
         </main>
 
         <footer>
             <p>This is a footer</p>
         </footer>
-
+    
+        <script>
+            // Workbox Plugin - Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+              // Use the window load event to keep the page load performant
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+              });
+            }
+        </script>
+    
     </body>
 </html>

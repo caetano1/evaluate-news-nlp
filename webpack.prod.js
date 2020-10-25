@@ -1,10 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['@babel/polyfill', './src/client/index.js'],
     output: {
         libraryTarget: 'var',
         library: 'Client'
@@ -30,6 +31,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin ({
             filename: '[name].css'
-        })
+        }),
+        new WorkboxPlugin.GenerateSW ()
     ]
 }
