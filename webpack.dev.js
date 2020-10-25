@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['@babel/polyfill', './src/client/index.js'],
     output: {
         libraryTarget: 'var',
         library: 'Client'
@@ -13,7 +13,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port: 8080
     },
     devtool: 'source-map',
     stats: 'verbose',
