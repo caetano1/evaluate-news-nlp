@@ -12,12 +12,11 @@ function handleSubmit(event) {
         // performs a POST request to send the input text and perform the sentiment analysis
         let body = { reqBody: formText };
         evaluateSentiments('http://localhost:8080/nplApi', body)
-        /* .then(res => res.json()) */
         .then(function(evaluation) {
-            console.log(evaluation);
-            updateUi();
+            updateUi(evaluation);
         })
 
+        // Generates the request to the server to fetch the NLP evaluation
         async function evaluateSentiments (url='', data={}) {
             const res = await fetch (url, {
                 method: 'POST',
@@ -36,14 +35,15 @@ function handleSubmit(event) {
 
         }
 
+        // Function - updates the UI with the information fetched from the external application
         const updateUi = (data={}) => {
+            console.log(data);
 
+            document.getElementById('agreement').innerHTML = `Agreement or disagreement: ${data.agreement}`;
+            document.getElementById('confidence').innerHTML = `Evaluation confidence level (100 is max): ${data.confidence}`;
+            document.getElementById('irony').innerHTML = `Is it an ironic evaluation: ${data.irony}`;
+            document.getElementById('subjectivity').innerHTML = `Objective or subjective: ${data.subjectivity}`;
         }
-        /* fetch('http://localhost:8080/test')
-        .then(res => res.json())
-        .then(function(res) {
-            document.getElementById('results').innerHTML = res.message
-        }) */
     }
 }
 
