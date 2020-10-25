@@ -1,4 +1,5 @@
 import evaluation from "../../server/mockAPI";
+const fetch = require('node-fetch');
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -45,6 +46,26 @@ const updateUi = (data={}) => {
     document.getElementById('confidence').innerHTML = `Evaluation confidence level (100 is max): ${data.confidence}`;
     document.getElementById('irony').innerHTML = `Is it an ironic evaluation: ${data.irony}`;
     document.getElementById('subjectivity').innerHTML = `Objective or subjective: ${data.subjectivity}`;
+    document.getElementById('sentiment').innerHTML = `Sentiment: ${switchSentiment(data.score_tag)}`;
+
+    function switchSentiment (entry) {
+        switch (entry) {
+            case "P+":
+                return "Strong positive";
+            case "P":
+                return "Positive";
+            case "NEU":
+                return "Neutral";
+            case "N":
+                return "Negative";
+            case "N+":
+                return "Strong negative";
+            case "NONE":
+                return "Without sentiment";
+            default:
+                return "Couldn't evaluate sentiment";
+        }
+    };
 }
 
 export { handleSubmit }
