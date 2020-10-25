@@ -19,14 +19,17 @@
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="textarea" value="" onblur="onBlur()" placeholder="Evaluation">
+                    <input id="name" type="text" name="textarea" value="" onblur="onBlur()" placeholder="Type here a critique to the last meal you had.">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>NLP Results:</strong>
+                <div id="agreement"></div>
+                <div id="confidence"></div>
+                <div id="irony"></div>
+                <div id="subjectivity"></div>
             </section>
         </main>
 
