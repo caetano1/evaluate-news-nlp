@@ -12,7 +12,7 @@ function handleSubmit(event) {
 
         // performs a POST request to send the input text and perform the sentiment analysis
         let body = { reqBody: formText };
-        evaluateSentiments('http://localhost:8080/nplApi', body)
+        evaluateSentiments('http://localhost:8081/nplApi', body)
         .then(function(evaluation) {
             updateUi(evaluation);
         })
